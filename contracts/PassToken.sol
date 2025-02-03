@@ -13,7 +13,6 @@ import {Strings} from "@openzeppelin/contracts/utils/Strings.sol";
 
 contract PassToken is ERC721, Ownable {
     uint256 private _nextTokenId;
-    uint256 private _price = 0.06 ether; // This sets the initial price of the tokens to 0.06 ether
     string public baseTokenURI;
     string public contractMetadataURI;
     /*
