@@ -8,11 +8,10 @@ pragma solidity ^0.8.22;
 
 // Import libraries from OpenZeppelin Contracts v5.0.0
 import {ERC721} from "@openzeppelin/contracts/token/ERC721/ERC721.sol";
-import {ERC721Pausable} from "@openzeppelin/contracts/token/ERC721/extensions/ERC721Pausable.sol";
 import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
 import {Strings} from "@openzeppelin/contracts/utils/Strings.sol";
 
-contract PassToken is ERC721, ERC721Pausable, Ownable {
+contract PassToken is ERC721, Ownable {
     uint256 private _nextTokenId;
     uint256 private _price = 0.06 ether; // This sets the initial price of the tokens to 0.06 ether
     string public baseTokenURI;
@@ -41,19 +40,6 @@ contract PassToken is ERC721, ERC721Pausable, Ownable {
         "https://YourBASEURIaddress.com/5"
         The ID 5 is appended to the base URI to form the token URI automatically.
     */
-
-    /*
-    @dev This function is used to pause the contract. It is only accessible by the owner.
-    */
-    function pause() public onlyOwner {
-        _pause();
-    }
-    /*
-    @dev This function is used to unpause the contract. It is only accessible by the owner.
-    */
-    function unpause() public onlyOwner {
-        _unpause();
-    }
 
     /*
     @dev This function is used to mint a new token. It is only accessible by the owner.
@@ -133,7 +119,7 @@ contract PassToken is ERC721, ERC721Pausable, Ownable {
         address to,
         uint256 tokenId,
         address auth
-    ) internal override(ERC721, ERC721Pausable) returns (address) {
+    ) internal override(ERC721) returns (address) {
         return super._update(to, tokenId, auth);
     }
 }
