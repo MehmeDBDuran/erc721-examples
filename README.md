@@ -22,28 +22,28 @@ NFTs are **unique digital assets** that can represent things like **art, collect
 To use this contract, you first need to **download the project files** onto your computer.  
 Open a terminal (Command Prompt, PowerShell, or Terminal) and run:
 
-\```
+```
 git clone https://github.com/MehmeDBDuran/erc721-examples.git
 cd PassToken
-\```
+```
 
 ### 2️⃣ Install Dependencies  
 Before running any scripts, you need to install some required tools.  
 Make sure you have **Node.js** installed, then run:  
 
-\```
+```
 npm install
-\```
+```
 
 ### 3️⃣ Setup Environment Variables  
 Since this project interacts with the **Ethereum blockchain**, we need to configure some **API keys and wallet details**.  
 
 Create a new **.env file** inside the project folder and add the following:
 
-\```
+```
 ALCHEMY_API_KEY=your-alchemy-api-key
 PRIVATE_KEY=your-wallet-private-key
-\```
+```
 
 Replace:
 - `your-alchemy-api-key` → Get this from [Alchemy](https://www.alchemy.com/) (a blockchain API provider).
@@ -79,7 +79,7 @@ The contract supports **three networks**:
 
 Here’s the configuration file (`hardhat.config.js`):
 
-\```js
+```js
 module.exports = {
   solidity: "0.8.22",
   networks: {
@@ -96,7 +96,7 @@ module.exports = {
     }
   }
 };
-\```
+```
 
 ---
 
@@ -106,9 +106,9 @@ module.exports = {
 Before deploying on the real Ethereum network, **you should test on Sepolia**.  
 To deploy on Sepolia, run:  
 
-\```
+```
 npx hardhat ignition deploy ignition/modules/PassToken.js --network sepolia
-\```
+```
 
 This will:
 - Deploy the contract on the Sepolia test network.
@@ -117,9 +117,9 @@ This will:
 ### 🌍 Deploy to Ethereum Mainnet  
 Once testing is complete, you can deploy to **Ethereum Mainnet** by running:
 
-\```
+```
 npx hardhat ignition deploy ignition/modules/PassToken.js --network ethereum
-\```
+```
 
 This will **make your NFT contract live on the blockchain**.
 
@@ -158,14 +158,14 @@ The `PassToken.sol` contract allows the **owner** to:
 ### Mint an NFT (Owner Only)  
 To create a new NFT and assign it to someone, the owner calls:
 
-\```solidity
+```solidity
 safeMint(receiver_address);
-\```
+```
 
 Example:
-\```solidity
+```solidity
 safeMint(0x1234567890abcdef1234567890abcdef12345678);
-\```
+```
 This mints an NFT and sends it to the address **0x123...78**.
 
 ---
@@ -173,14 +173,14 @@ This mints an NFT and sends it to the address **0x123...78**.
 ### Batch Mint NFTs (Owner Only)  
 To mint **multiple NFTs** at once, use:
 
-\```solidity
+```solidity
 batchMint(receiver_address, amount);
-\```
+```
 
 Example:
-\```solidity
+```solidity
 batchMint(0x1234567890abcdef1234567890abcdef12345678, 5);
-\```
+```
 This will mint **5 NFTs** and send them to **0x123...78**.
 
 ---
@@ -189,27 +189,27 @@ This will mint **5 NFTs** and send them to **0x123...78**.
 NFT metadata contains information about the NFT (image, description, attributes).  
 The owner can update the **Base URI** using:
 
-\```solidity
+```solidity
 setBaseURI("https://NewMetadataURL.com/");
-\```
+```
 
 ---
 
 ### Get Token Metadata  
 To get details about a specific NFT (like its image and name), call:
 
-\```solidity
+```solidity
 tokenURI(tokenId);
-\```
+```
 
 Example:
-\```solidity
+```solidity
 tokenURI(1);
-\```
+```
 This will return something like:
-\```
+```
 https://YourBASEURIaddress.com/1.json
-\```
+```
 
 ---
 
