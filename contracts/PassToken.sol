@@ -102,7 +102,7 @@ contract PassToken is ERC721, Ownable {
     @dev This function is used by OpenSea to get the contract metadata URI.
     */
     function contractURI() public view returns (string memory) {
-        return baseTokenURI;
+        return contractMetadataURI;
     }
 
     /*
